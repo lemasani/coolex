@@ -33,7 +33,7 @@ const AboutSection = () => {
             animate={isInView ? "visible" : "hidden"}
             variants={fadeInUp}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-coolex-blue mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
               About Coolex Links Limited
             </h2>
             <BottomBorder />
