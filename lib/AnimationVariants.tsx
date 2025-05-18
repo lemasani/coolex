@@ -105,3 +105,13 @@ export const staggerItems = {
     },
   },
 };
+
+
+export const heroImageVariant = {
+  hidden: { scale: 1.1, opacity: 0.8 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { duration: 1.5, ease: "easeOut" },
+  },
+};

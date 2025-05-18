@@ -2,29 +2,10 @@
 import { Button } from "@/components/ui/button";
 import { MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
+import { fadeInUp, heroImageVariant } from "@/lib/AnimationVariants";
 
-// Reusable animation variants for easy maintenance
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (custom: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      delay: custom * 0.2,
-      ease: "easeOut",
-    },
-  }),
-};
 
-const heroImageVariant = {
-  hidden: { scale: 1.1, opacity: 0.8 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: { duration: 1.5, ease: "easeOut" },
-  },
-};
+
 
 const HeroSection = () => {
   // ACTION REQUIRED: Replace with your actual WhatsApp number
