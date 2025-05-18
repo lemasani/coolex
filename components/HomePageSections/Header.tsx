@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -9,7 +10,13 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-95 shadow-sm">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center space-x-2">
-          <img src="/logo.png" alt="coolex logo"  className='w-20 h-15'/>
+          <Image 
+            src="/logo.png" 
+            alt="Coolex Logo" 
+            width={80} 
+            height={60} 
+            priority
+          />
           <span className="text-2xl font-bold text-coolex-blue">Coolex Links</span>
         </a>
 

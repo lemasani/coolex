@@ -4,35 +4,14 @@ import { Button } from "@/components/ui/button";
 import CategoryCard from "@/components/HomePageSections/CategoryCard";
 import { categories } from "@/data/categories";
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-
-// Reusable animation variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
-  },
-};
+import { fadeIn, staggerContainer } from "@/lib/AnimationVariants";
+import useSectionInView from "@/hooks/useSectionInView"; // Import the hook
+import BottomBorder from "@/components/bottomBorder";
 
 const ProductCategoriesSection = () => {
   // ACTION REQUIRED: Replace with your actual WhatsApp number
   const WHATSAPP_NUMBER = "255XXXXXXXXX";
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const { sectionRef, isInView } = useSectionInView({ margin: "-100px" });
 
   const handleCategoryInquiry = (categoryName: string) => {
     const message = encodeURIComponent(
@@ -50,15 +29,10 @@ const ProductCategoriesSection = () => {
           animate={isInView ? "visible" : "hidden"}
           variants={fadeIn}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-coolex-blue">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
             Our Product Categories
           </h2>
-          <motion.div
-            className="w-20 h-1 bg-coolex-accent mx-auto mb-6"
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 80 } : { width: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          ></motion.div>
+          <BottomBorder />
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Explore our wide range of quality products sourced from trusted
             suppliers worldwide. From vehicles to home appliances, we&apos;ve got you

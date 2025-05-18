@@ -3,62 +3,9 @@ import { ShieldCheck, Globe, Truck, DollarSign } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { cardAnimation, fadeInUp, iconAnimation, staggerContainer } from "@/lib/AnimationVariants";
+import BottomBorder from "@/components/bottomBorder";
 
-// Animation variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-// Feature card animation
-const cardAnimation = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (custom: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      delay: custom * 0.1,
-      ease: "easeOut",
-    },
-  }),
-  hover: {
-    y: -10,
-    transition: { duration: 0.2 },
-  },
-};
-
-// Icon animation
-const iconAnimation = {
-  hidden: { scale: 0 },
-  visible: {
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 260,
-      damping: 20,
-    },
-  },
-  hover: {
-    rotate: [0, -10, 10, -10, 0],
-    transition: { duration: 0.5 },
-  },
-};
 
 const features = [
   {
@@ -105,18 +52,13 @@ const WhyChooseUs = () => {
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          variants={fadeIn}
-          className="text-center"
+          variants={fadeInUp}
+          className="text-justify mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Why Choose Us?
           </h2>
-          <motion.div
-            className="w-24 h-1 bg-coolex-accent mx-auto mb-12"
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 96 } : { width: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          ></motion.div>
+          <BottomBorder width={96} />
         </motion.div>
 
         <motion.div
@@ -134,15 +76,15 @@ const WhyChooseUs = () => {
               whileHover="hover"
             >
               <motion.div
-                className="flex justify-center mb-4"
+                className="flex justify-center mb-4 text-accent"
                 variants={iconAnimation}
               >
                 {feature.icon}
               </motion.div>
-              <h3 className="text-xl font-semibold text-center mb-3">
+              <h3 className="text-xl font-semibold text-center mb-3 text-primary">
                 {feature.title}
               </h3>
-              <p className="text-center text-gray-200">{feature.description}</p>
+              <p className="text-center text-black">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>

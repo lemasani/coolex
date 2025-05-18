@@ -3,35 +3,17 @@ import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-
-// Reusable animation variants - these can be easily modified
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-};
+import { fadeInUp, staggerContainer } from "@/lib/AnimationVariants";
+import BottomBorder from "@/components/bottomBorder";
+import useSectionInView from "@/hooks/useSectionInView";
 
 const AboutSection = () => {
-  // References for scroll-triggered animations
-  const sectionRef = useRef(null);
+ 
   const missionRef = useRef(null);
 
-  // Check if elements are in view to trigger animations
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const { sectionRef, isInView } = useSectionInView({ margin: "-100px" });
+
+  
   const isMissionInView = useInView(missionRef, {
     once: true,
     margin: "-100px",
@@ -49,17 +31,12 @@ const AboutSection = () => {
             className="text-center mb-12"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            variants={fadeIn}
+            variants={fadeInUp}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-coolex-blue mb-4">
               About Coolex Links Limited
             </h2>
-            <motion.div
-              className="w-20 h-1 bg-coolex-accent mx-auto"
-              initial={{ width: 0 }}
-              animate={isInView ? { width: 80 } : { width: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            ></motion.div>
+            <BottomBorder />
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
@@ -67,7 +44,7 @@ const AboutSection = () => {
               className="space-y-6"
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              variants={fadeIn}
+              variants={fadeInUp}
               transition={{ delay: 0.2 }}
             >
               <p className="text-lg text-gray-800 leading-relaxed">
@@ -129,15 +106,15 @@ const AboutSection = () => {
               className="bg-white p-6 rounded-lg shadow-md border border-gray-100"
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              variants={fadeIn}
+              variants={fadeInUp}
               transition={{ delay: 0.4 }}
               whileHover={{
                 y: -5,
                 boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
               }}
             >
-              <h3 className="font-semibold text-xl text-coolex-blue mb-4 flex items-center">
-                <span className="w-2 h-6 bg-coolex-accent mr-2 rounded-sm"></span>
+              <h3 className="font-semibold text-xl text-primary mb-4 flex items-center">
+                <span className="w-2 h-6 bg-accent mr-2 rounded-sm"></span>
                 Our Promise
               </h3>
 
@@ -158,9 +135,9 @@ const AboutSection = () => {
                   <motion.li
                     key={index}
                     className="flex items-center"
-                    variants={fadeIn}
+                    variants={fadeInUp}
                   >
-                    <div className="h-3 w-3 bg-coolex-accent rounded-full mr-3"></div>
+                    <div className="h-3 w-3 bg-accent rounded-full mr-3"></div>
                     <span className="text-gray-700">{item}</span>
                   </motion.li>
                 ))}
@@ -202,15 +179,10 @@ const AboutSection = () => {
                 }
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <h3 className="text-xl font-semibold text-coolex-blue">
+                <h3 className="text-xl font-semibold text-primary">
                   Our Mission
                 </h3>
-                <motion.div
-                  className="w-16 h-1 bg-coolex-accent mx-auto"
-                  initial={{ width: 0 }}
-                  animate={isMissionInView ? { width: 64 } : { width: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                ></motion.div>
+                <BottomBorder width={64} />
                 <p className="text-gray-700">
                   To provide high-quality Japanese vehicles and home appliances
                   to Tanzanian consumers at affordable prices with exceptional
@@ -227,15 +199,10 @@ const AboutSection = () => {
                 }
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                <h3 className="text-xl font-semibold text-coolex-blue">
+                <h3 className="text-xl font-semibold text-primary">
                   Our Vision
                 </h3>
-                <motion.div
-                  className="w-16 h-1 bg-coolex-accent mx-auto"
-                  initial={{ width: 0 }}
-                  animate={isMissionInView ? { width: 64 } : { width: 0 }}
-                  transition={{ duration: 0.5, delay: 0.8 }}
-                ></motion.div>
+                <BottomBorder  width={64} />
                 <p className="text-gray-700">
                   To become Tanzania&apos;s most trusted supplier of imported
                   vehicles and home appliances, known for quality, reliability
