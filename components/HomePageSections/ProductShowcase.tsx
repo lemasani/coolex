@@ -1,4 +1,6 @@
 
+import Image from 'next/image';
+
 import { Card, CardContent } from "@/components/ui/card";
 
 const products = [
@@ -59,10 +61,12 @@ const ProductShowcase = () => {
           {products.map((product) => (
             <Card key={product.id} className="overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
               <div className="h-48 overflow-hidden">
-                <img 
-                  src={product.image} 
-                  alt={product.name} 
-                  className="w-full h-full object-cover"
+               <Image
+                  src={product.image}
+                  alt={product.name}
+                  width={500} // Adjust as needed
+                  height={300} // Adjust as needed
+                  style={{ objectFit: 'cover' }} // Optional: Maintain aspect ratio
                 />
               </div>
               <CardContent className="p-6">
