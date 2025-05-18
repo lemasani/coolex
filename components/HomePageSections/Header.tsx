@@ -17,7 +17,7 @@ const Header = () => {
             height={60} 
             priority
           />
-          <span className="text-2xl font-bold text-coolex-blue">Coolex Links</span>
+          <span className="text-2xl font-bold text-primary">Coolex Links</span>
         </a>
 
         {/* Desktop Navigation */}
