@@ -7,6 +7,15 @@ export const fadeIn = {
   },
 };
 
+export const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
 export const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (custom: number) => ({
@@ -83,5 +92,16 @@ export const iconAnimation = {
   hover: {
     rotate: [0, -10, 10, -10, 0],
     transition: { duration: 0.5 },
+  },
+};
+
+export const staggerItems = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
   },
 };

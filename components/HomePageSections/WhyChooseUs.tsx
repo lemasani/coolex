@@ -70,7 +70,7 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => (
             <motion.div
               key={feature.id}
-              className="p-6 bg-white bg-opacity-10 rounded-lg backdrop-blur-sm hover:bg-opacity-15 transition-all"
+              className="p-6 bg-secondary bg-opacity-10 rounded-lg backdrop-blur-sm hover:bg-opacity-15 transition-all"
               variants={cardAnimation}
               custom={index}
               whileHover="hover"

@@ -3,45 +3,9 @@ import { Phone, Mail, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { fadeUp, fromLeft, fromRight, staggerItems } from "@/lib/AnimationVariants";
+import BottomBorder from "../bottomBorder";
 
-// Animation variants
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
-
-const fromLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
-
-const fromRight = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
-
-const staggerItems = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-};
 
 const ContactSection = () => {
   const sectionRef = useRef(null);
@@ -59,12 +23,7 @@ const ContactSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center text-coolex-blue mb-4">
             Contact Us
           </h2>
-          <motion.div
-            className="w-24 h-1 bg-coolex-accent mx-auto mb-12"
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 96 } : { width: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          ></motion.div>
+          <BottomBorder width={96} />
         </motion.div>
 
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
@@ -91,7 +50,7 @@ const ContactSection = () => {
                   whileHover={{ scale: 1.2, rotate: 15 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Phone size={24} className="text-coolex-accent mt-1" />
+                  <Phone size={24} className="text-accent mt-1" />
                 </motion.div>
                 <div>
                   <h4 className="font-medium text-gray-800">Phone</h4>
@@ -108,7 +67,7 @@ const ContactSection = () => {
                   whileHover={{ scale: 1.2, rotate: -15 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Mail size={24} className="text-coolex-accent mt-1" />
+                  <Mail size={24} className="text-accent mt-1" />
                 </motion.div>
                 <div>
                   <h4 className="font-medium text-gray-800">Email</h4>
