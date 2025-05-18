@@ -7,17 +7,13 @@ import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "@/lib/AnimationVariants";
 import useSectionInView from "@/hooks/useSectionInView"; // Import the hook
 import BottomBorder from "@/components/bottomBorder";
+import { openWhatsAppChat, whatsAppMessages } from "@/lib/whatsapp";
 
 const ProductCategoriesSection = () => {
-  // ACTION REQUIRED: Replace with your actual WhatsApp number
-  const WHATSAPP_NUMBER = "255XXXXXXXXX";
   const { sectionRef, isInView } = useSectionInView({ margin: "-100px" });
 
   const handleCategoryInquiry = (categoryName: string) => {
-    const message = encodeURIComponent(
-      `Hello Coolex-Links! I'm interested in learning more about your ${categoryName} products.`
-    );
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+    openWhatsAppChat(whatsAppMessages.categoryInquiry(categoryName));
   };
 
   return (
@@ -76,15 +72,7 @@ const ProductCategoriesSection = () => {
             <Button
               size="lg"
               className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 text-lg flex items-center space-x-2 mx-auto"
-              onClick={() => {
-                const message = encodeURIComponent(
-                  "Hello Coolex-Links! I'm interested in your products and would like to know more about what you offer."
-                );
-                window.open(
-                  `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,
-                  "_blank"
-                );
-              }}
+              onClick={() => openWhatsAppChat(whatsAppMessages.general)}
             >
               <motion.div
                 animate={{ rotate: [0, 15, -15, 0] }}

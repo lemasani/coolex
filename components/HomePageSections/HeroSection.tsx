@@ -3,17 +3,11 @@ import { Button } from "@/components/ui/button";
 import { MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, heroImageVariant } from "@/lib/AnimationVariants";
-
-
+import { generateWhatsAppUrl, whatsAppMessages } from "@/lib/whatsapp";
 
 
 const HeroSection = () => {
-  // ACTION REQUIRED: Replace with your actual WhatsApp number
-  const WHATSAPP_NUMBER = "255XXXXXXXXX"; // Replace with your Tanzania number
-  const WHATSAPP_TEXT = encodeURIComponent(
-    "Hello Coolex-Links! I'm interested in learning more about your products."
-  );
-  const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`;
+  const whatsAppUrl = generateWhatsAppUrl(whatsAppMessages.general);
 
   return (
     <motion.div
@@ -68,7 +62,7 @@ const HeroSection = () => {
               className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 text-lg flex items-center space-x-2"
               asChild
             >
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer">
                 <motion.span
                   animate={{ rotate: [0, 15, -15, 0] }}
                   transition={{ duration: 1, repeat: Infinity, repeatDelay: 3 }}

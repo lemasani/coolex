@@ -5,6 +5,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { fadeUp, fromLeft, fromRight, staggerItems } from "@/lib/AnimationVariants";
 import BottomBorder from "../bottomBorder";
+import { openWhatsAppChat } from "@/lib/whatsapp";
 
 
 const ContactSection = () => {
@@ -117,7 +118,7 @@ const ContactSection = () => {
                 <button
                   className="bg-white text-green-600 font-medium py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-2"
                   onClick={() =>
-                    window.open("https://chat.whatsapp.com/CRGLBCmUd5gGIHV0XzJibs", "_blank")
+                    openWhatsAppChat("Join WhatsApp Group")
                   }
                 >
                   <MessageSquare size={20} />
