@@ -5,19 +5,22 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../lib/generated/prisma"
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+  output          = "../lib/generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pgcrypto]
 }
 
 model Product {
   id             String                 @id @default(uuid())
   title          String
   description    String?
+  status         ProductStatus          @default(AVAILABLE)
   price          Float
   category       Category               @relation(fields: [categoryId], references: [id])
   categoryId     String
@@ -68,4 +71,9 @@ model User {
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+enum ProductStatus {
+  AVAILABLE
+  SOLD_OUT
 }

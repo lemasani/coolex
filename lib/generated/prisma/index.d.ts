@@ -45,6 +45,23 @@ export type Interaction = $Result.DefaultSelection<Prisma.$InteractionPayload>
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const ProductStatus: {
+  AVAILABLE: 'AVAILABLE',
+  SOLD_OUT: 'SOLD_OUT'
+};
+
+export type ProductStatus = (typeof ProductStatus)[keyof typeof ProductStatus]
+
+}
+
+export type ProductStatus = $Enums.ProductStatus
+
+export const ProductStatus: typeof $Enums.ProductStatus
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -1427,6 +1444,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     description: string | null
+    status: $Enums.ProductStatus | null
     price: number | null
     categoryId: string | null
     location: string | null
@@ -1439,6 +1457,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     description: string | null
+    status: $Enums.ProductStatus | null
     price: number | null
     categoryId: string | null
     location: string | null
@@ -1451,6 +1470,7 @@ export namespace Prisma {
     id: number
     title: number
     description: number
+    status: number
     price: number
     categoryId: number
     location: number
@@ -1473,6 +1493,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    status?: true
     price?: true
     categoryId?: true
     location?: true
@@ -1485,6 +1506,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    status?: true
     price?: true
     categoryId?: true
     location?: true
@@ -1497,6 +1519,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    status?: true
     price?: true
     categoryId?: true
     location?: true
@@ -1596,6 +1619,7 @@ export namespace Prisma {
     id: string
     title: string
     description: string | null
+    status: $Enums.ProductStatus
     price: number
     categoryId: string
     location: string | null
@@ -1627,6 +1651,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    status?: boolean
     price?: boolean
     categoryId?: boolean
     location?: boolean
@@ -1644,6 +1669,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    status?: boolean
     price?: boolean
     categoryId?: boolean
     location?: boolean
@@ -1657,6 +1683,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    status?: boolean
     price?: boolean
     categoryId?: boolean
     location?: boolean
@@ -1670,6 +1697,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    status?: boolean
     price?: boolean
     categoryId?: boolean
     location?: boolean
@@ -1678,7 +1706,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "price" | "categoryId" | "location" | "contactLink" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "status" | "price" | "categoryId" | "location" | "contactLink" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     images?: boolean | Product$imagesArgs<ExtArgs>
@@ -1705,6 +1733,7 @@ export namespace Prisma {
       id: string
       title: string
       description: string | null
+      status: $Enums.ProductStatus
       price: number
       categoryId: string
       location: string | null
@@ -2141,6 +2170,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Product", 'String'>
     readonly title: FieldRef<"Product", 'String'>
     readonly description: FieldRef<"Product", 'String'>
+    readonly status: FieldRef<"Product", 'ProductStatus'>
     readonly price: FieldRef<"Product", 'Float'>
     readonly categoryId: FieldRef<"Product", 'String'>
     readonly location: FieldRef<"Product", 'String'>
@@ -7838,6 +7868,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     description: 'description',
+    status: 'status',
     price: 'price',
     categoryId: 'categoryId',
     location: 'location',
@@ -7944,6 +7975,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'ProductStatus'
+   */
+  export type EnumProductStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProductStatus[]'
+   */
+  export type ListEnumProductStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -7995,6 +8040,7 @@ export namespace Prisma {
     id?: StringFilter<"Product"> | string
     title?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
+    status?: EnumProductStatusFilter<"Product"> | $Enums.ProductStatus
     price?: FloatFilter<"Product"> | number
     categoryId?: StringFilter<"Product"> | string
     location?: StringNullableFilter<"Product"> | string | null
@@ -8011,6 +8057,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
+    status?: SortOrder
     price?: SortOrder
     categoryId?: SortOrder
     location?: SortOrderInput | SortOrder
@@ -8030,6 +8077,7 @@ export namespace Prisma {
     NOT?: ProductWhereInput | ProductWhereInput[]
     title?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
+    status?: EnumProductStatusFilter<"Product"> | $Enums.ProductStatus
     price?: FloatFilter<"Product"> | number
     categoryId?: StringFilter<"Product"> | string
     location?: StringNullableFilter<"Product"> | string | null
@@ -8046,6 +8094,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
+    status?: SortOrder
     price?: SortOrder
     categoryId?: SortOrder
     location?: SortOrderInput | SortOrder
@@ -8066,6 +8115,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Product"> | string
     title?: StringWithAggregatesFilter<"Product"> | string
     description?: StringNullableWithAggregatesFilter<"Product"> | string | null
+    status?: EnumProductStatusWithAggregatesFilter<"Product"> | $Enums.ProductStatus
     price?: FloatWithAggregatesFilter<"Product"> | number
     categoryId?: StringWithAggregatesFilter<"Product"> | string
     location?: StringNullableWithAggregatesFilter<"Product"> | string | null
@@ -8330,6 +8380,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     location?: string | null
     contactLink: string
@@ -8345,6 +8396,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     categoryId: string
     location?: string | null
@@ -8360,6 +8412,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     location?: NullableStringFieldUpdateOperationsInput | string | null
     contactLink?: StringFieldUpdateOperationsInput | string
@@ -8375,6 +8428,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     categoryId?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8390,6 +8444,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     categoryId: string
     location?: string | null
@@ -8402,6 +8457,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     location?: NullableStringFieldUpdateOperationsInput | string | null
     contactLink?: StringFieldUpdateOperationsInput | string
@@ -8413,6 +8469,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     categoryId?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8704,6 +8761,13 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type EnumProductStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductStatus | EnumProductStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductStatusFilter<$PrismaModel> | $Enums.ProductStatus
+  }
+
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -8770,6 +8834,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     price?: SortOrder
     categoryId?: SortOrder
     location?: SortOrder
@@ -8786,6 +8851,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     price?: SortOrder
     categoryId?: SortOrder
     location?: SortOrder
@@ -8798,6 +8864,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     price?: SortOrder
     categoryId?: SortOrder
     location?: SortOrder
@@ -8844,6 +8911,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type EnumProductStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductStatus | EnumProductStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductStatusWithAggregatesFilter<$PrismaModel> | $Enums.ProductStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProductStatusFilter<$PrismaModel>
+    _max?: NestedEnumProductStatusFilter<$PrismaModel>
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -9053,6 +9130,10 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type EnumProductStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ProductStatus
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -9271,6 +9352,13 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedEnumProductStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductStatus | EnumProductStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductStatusFilter<$PrismaModel> | $Enums.ProductStatus
+  }
+
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -9347,6 +9435,16 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumProductStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductStatus | EnumProductStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductStatusWithAggregatesFilter<$PrismaModel> | $Enums.ProductStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProductStatusFilter<$PrismaModel>
+    _max?: NestedEnumProductStatusFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -9566,6 +9664,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     location?: string | null
     contactLink: string
@@ -9580,6 +9679,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     location?: string | null
     contactLink: string
@@ -9623,6 +9723,7 @@ export namespace Prisma {
     id?: StringFilter<"Product"> | string
     title?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
+    status?: EnumProductStatusFilter<"Product"> | $Enums.ProductStatus
     price?: FloatFilter<"Product"> | number
     categoryId?: StringFilter<"Product"> | string
     location?: StringNullableFilter<"Product"> | string | null
@@ -9635,6 +9736,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     location?: string | null
     contactLink: string
@@ -9649,6 +9751,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     categoryId: string
     location?: string | null
@@ -9679,6 +9782,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     location?: NullableStringFieldUpdateOperationsInput | string | null
     contactLink?: StringFieldUpdateOperationsInput | string
@@ -9693,6 +9797,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     categoryId?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9707,6 +9812,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     location?: string | null
     contactLink: string
@@ -9721,6 +9827,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     categoryId: string
     location?: string | null
@@ -9751,6 +9858,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     location?: NullableStringFieldUpdateOperationsInput | string | null
     contactLink?: StringFieldUpdateOperationsInput | string
@@ -9765,6 +9873,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     categoryId?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9779,6 +9888,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     location?: string | null
     contactLink: string
@@ -9793,6 +9903,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     categoryId: string
     location?: string | null
@@ -9823,6 +9934,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     location?: NullableStringFieldUpdateOperationsInput | string | null
     contactLink?: StringFieldUpdateOperationsInput | string
@@ -9837,6 +9949,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     categoryId?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9927,6 +10040,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.ProductStatus
     price: number
     location?: string | null
     contactLink: string
@@ -9938,6 +10052,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     location?: NullableStringFieldUpdateOperationsInput | string | null
     contactLink?: StringFieldUpdateOperationsInput | string
@@ -9952,6 +10067,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     location?: NullableStringFieldUpdateOperationsInput | string | null
     contactLink?: StringFieldUpdateOperationsInput | string
@@ -9966,6 +10082,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
     price?: FloatFieldUpdateOperationsInput | number
     location?: NullableStringFieldUpdateOperationsInput | string | null
     contactLink?: StringFieldUpdateOperationsInput | string
