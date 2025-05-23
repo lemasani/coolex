@@ -29,6 +29,11 @@ export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
  */
 export type ProductImage = $Result.DefaultSelection<Prisma.$ProductImagePayload>
 /**
+ * Model CategorySpecificationTemplate
+ * 
+ */
+export type CategorySpecificationTemplate = $Result.DefaultSelection<Prisma.$CategorySpecificationTemplatePayload>
+/**
  * Model ProductSpecification
  * 
  */
@@ -215,6 +220,16 @@ export class PrismaClient<
     * ```
     */
   get productImage(): Prisma.ProductImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.categorySpecificationTemplate`: Exposes CRUD operations for the **CategorySpecificationTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CategorySpecificationTemplates
+    * const categorySpecificationTemplates = await prisma.categorySpecificationTemplate.findMany()
+    * ```
+    */
+  get categorySpecificationTemplate(): Prisma.CategorySpecificationTemplateDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.productSpecification`: Exposes CRUD operations for the **ProductSpecification** model.
@@ -688,6 +703,7 @@ export namespace Prisma {
     Product: 'Product',
     Category: 'Category',
     ProductImage: 'ProductImage',
+    CategorySpecificationTemplate: 'CategorySpecificationTemplate',
     ProductSpecification: 'ProductSpecification',
     Interaction: 'Interaction',
     User: 'User'
@@ -709,7 +725,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "product" | "category" | "productImage" | "productSpecification" | "interaction" | "user"
+      modelProps: "product" | "category" | "productImage" | "categorySpecificationTemplate" | "productSpecification" | "interaction" | "user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -932,6 +948,80 @@ export namespace Prisma {
           count: {
             args: Prisma.ProductImageCountArgs<ExtArgs>
             result: $Utils.Optional<ProductImageCountAggregateOutputType> | number
+          }
+        }
+      }
+      CategorySpecificationTemplate: {
+        payload: Prisma.$CategorySpecificationTemplatePayload<ExtArgs>
+        fields: Prisma.CategorySpecificationTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CategorySpecificationTemplateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CategorySpecificationTemplateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.CategorySpecificationTemplateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CategorySpecificationTemplateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.CategorySpecificationTemplateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.CategorySpecificationTemplateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.CategorySpecificationTemplateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CategorySpecificationTemplateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload>[]
+          }
+          delete: {
+            args: Prisma.CategorySpecificationTemplateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload>
+          }
+          update: {
+            args: Prisma.CategorySpecificationTemplateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.CategorySpecificationTemplateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CategorySpecificationTemplateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CategorySpecificationTemplateUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload>[]
+          }
+          upsert: {
+            args: Prisma.CategorySpecificationTemplateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategorySpecificationTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.CategorySpecificationTemplateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategorySpecificationTemplate>
+          }
+          groupBy: {
+            args: Prisma.CategorySpecificationTemplateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategorySpecificationTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CategorySpecificationTemplateCountArgs<ExtArgs>
+            result: $Utils.Optional<CategorySpecificationTemplateCountAggregateOutputType> | number
           }
         }
       }
@@ -1244,6 +1334,7 @@ export namespace Prisma {
     product?: ProductOmit
     category?: CategoryOmit
     productImage?: ProductImageOmit
+    categorySpecificationTemplate?: CategorySpecificationTemplateOmit
     productSpecification?: ProductSpecificationOmit
     interaction?: InteractionOmit
     user?: UserOmit
@@ -1391,10 +1482,12 @@ export namespace Prisma {
 
   export type CategoryCountOutputType = {
     products: number
+    CategorySpecificationTemplate: number
   }
 
   export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | CategoryCountOutputTypeCountProductsArgs
+    CategorySpecificationTemplate?: boolean | CategoryCountOutputTypeCountCategorySpecificationTemplateArgs
   }
 
   // Custom InputTypes
@@ -1413,6 +1506,13 @@ export namespace Prisma {
    */
   export type CategoryCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductWhereInput
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountCategorySpecificationTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategorySpecificationTemplateWhereInput
   }
 
 
@@ -2804,6 +2904,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     products?: boolean | Category$productsArgs<ExtArgs>
+    CategorySpecificationTemplate?: boolean | Category$CategorySpecificationTemplateArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
@@ -2825,6 +2926,7 @@ export namespace Prisma {
   export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | Category$productsArgs<ExtArgs>
+    CategorySpecificationTemplate?: boolean | Category$CategorySpecificationTemplateArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2834,6 +2936,7 @@ export namespace Prisma {
     name: "Category"
     objects: {
       products: Prisma.$ProductPayload<ExtArgs>[]
+      CategorySpecificationTemplate: Prisma.$CategorySpecificationTemplatePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3233,6 +3336,7 @@ export namespace Prisma {
   export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     products<T extends Category$productsArgs<ExtArgs> = {}>(args?: Subset<T, Category$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    CategorySpecificationTemplate<T extends Category$CategorySpecificationTemplateArgs<ExtArgs> = {}>(args?: Subset<T, Category$CategorySpecificationTemplateArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3673,6 +3777,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
+  }
+
+  /**
+   * Category.CategorySpecificationTemplate
+   */
+  export type Category$CategorySpecificationTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
+    where?: CategorySpecificationTemplateWhereInput
+    orderBy?: CategorySpecificationTemplateOrderByWithRelationInput | CategorySpecificationTemplateOrderByWithRelationInput[]
+    cursor?: CategorySpecificationTemplateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategorySpecificationTemplateScalarFieldEnum | CategorySpecificationTemplateScalarFieldEnum[]
   }
 
   /**
@@ -4723,6 +4851,1038 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ProductImageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CategorySpecificationTemplate
+   */
+
+  export type AggregateCategorySpecificationTemplate = {
+    _count: CategorySpecificationTemplateCountAggregateOutputType | null
+    _min: CategorySpecificationTemplateMinAggregateOutputType | null
+    _max: CategorySpecificationTemplateMaxAggregateOutputType | null
+  }
+
+  export type CategorySpecificationTemplateMinAggregateOutputType = {
+    id: string | null
+    key: string | null
+    categoryId: string | null
+  }
+
+  export type CategorySpecificationTemplateMaxAggregateOutputType = {
+    id: string | null
+    key: string | null
+    categoryId: string | null
+  }
+
+  export type CategorySpecificationTemplateCountAggregateOutputType = {
+    id: number
+    key: number
+    categoryId: number
+    _all: number
+  }
+
+
+  export type CategorySpecificationTemplateMinAggregateInputType = {
+    id?: true
+    key?: true
+    categoryId?: true
+  }
+
+  export type CategorySpecificationTemplateMaxAggregateInputType = {
+    id?: true
+    key?: true
+    categoryId?: true
+  }
+
+  export type CategorySpecificationTemplateCountAggregateInputType = {
+    id?: true
+    key?: true
+    categoryId?: true
+    _all?: true
+  }
+
+  export type CategorySpecificationTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CategorySpecificationTemplate to aggregate.
+     */
+    where?: CategorySpecificationTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategorySpecificationTemplates to fetch.
+     */
+    orderBy?: CategorySpecificationTemplateOrderByWithRelationInput | CategorySpecificationTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CategorySpecificationTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategorySpecificationTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategorySpecificationTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CategorySpecificationTemplates
+    **/
+    _count?: true | CategorySpecificationTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CategorySpecificationTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CategorySpecificationTemplateMaxAggregateInputType
+  }
+
+  export type GetCategorySpecificationTemplateAggregateType<T extends CategorySpecificationTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategorySpecificationTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCategorySpecificationTemplate[P]>
+      : GetScalarType<T[P], AggregateCategorySpecificationTemplate[P]>
+  }
+
+
+
+
+  export type CategorySpecificationTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategorySpecificationTemplateWhereInput
+    orderBy?: CategorySpecificationTemplateOrderByWithAggregationInput | CategorySpecificationTemplateOrderByWithAggregationInput[]
+    by: CategorySpecificationTemplateScalarFieldEnum[] | CategorySpecificationTemplateScalarFieldEnum
+    having?: CategorySpecificationTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CategorySpecificationTemplateCountAggregateInputType | true
+    _min?: CategorySpecificationTemplateMinAggregateInputType
+    _max?: CategorySpecificationTemplateMaxAggregateInputType
+  }
+
+  export type CategorySpecificationTemplateGroupByOutputType = {
+    id: string
+    key: string
+    categoryId: string
+    _count: CategorySpecificationTemplateCountAggregateOutputType | null
+    _min: CategorySpecificationTemplateMinAggregateOutputType | null
+    _max: CategorySpecificationTemplateMaxAggregateOutputType | null
+  }
+
+  type GetCategorySpecificationTemplateGroupByPayload<T extends CategorySpecificationTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CategorySpecificationTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CategorySpecificationTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CategorySpecificationTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], CategorySpecificationTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CategorySpecificationTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    categoryId?: boolean
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["categorySpecificationTemplate"]>
+
+  export type CategorySpecificationTemplateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    categoryId?: boolean
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["categorySpecificationTemplate"]>
+
+  export type CategorySpecificationTemplateSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    categoryId?: boolean
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["categorySpecificationTemplate"]>
+
+  export type CategorySpecificationTemplateSelectScalar = {
+    id?: boolean
+    key?: boolean
+    categoryId?: boolean
+  }
+
+  export type CategorySpecificationTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "categoryId", ExtArgs["result"]["categorySpecificationTemplate"]>
+  export type CategorySpecificationTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }
+  export type CategorySpecificationTemplateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }
+  export type CategorySpecificationTemplateIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }
+
+  export type $CategorySpecificationTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CategorySpecificationTemplate"
+    objects: {
+      category: Prisma.$CategoryPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      key: string
+      categoryId: string
+    }, ExtArgs["result"]["categorySpecificationTemplate"]>
+    composites: {}
+  }
+
+  type CategorySpecificationTemplateGetPayload<S extends boolean | null | undefined | CategorySpecificationTemplateDefaultArgs> = $Result.GetResult<Prisma.$CategorySpecificationTemplatePayload, S>
+
+  type CategorySpecificationTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CategorySpecificationTemplateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CategorySpecificationTemplateCountAggregateInputType | true
+    }
+
+  export interface CategorySpecificationTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CategorySpecificationTemplate'], meta: { name: 'CategorySpecificationTemplate' } }
+    /**
+     * Find zero or one CategorySpecificationTemplate that matches the filter.
+     * @param {CategorySpecificationTemplateFindUniqueArgs} args - Arguments to find a CategorySpecificationTemplate
+     * @example
+     * // Get one CategorySpecificationTemplate
+     * const categorySpecificationTemplate = await prisma.categorySpecificationTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CategorySpecificationTemplateFindUniqueArgs>(args: SelectSubset<T, CategorySpecificationTemplateFindUniqueArgs<ExtArgs>>): Prisma__CategorySpecificationTemplateClient<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CategorySpecificationTemplate that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CategorySpecificationTemplateFindUniqueOrThrowArgs} args - Arguments to find a CategorySpecificationTemplate
+     * @example
+     * // Get one CategorySpecificationTemplate
+     * const categorySpecificationTemplate = await prisma.categorySpecificationTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CategorySpecificationTemplateFindUniqueOrThrowArgs>(args: SelectSubset<T, CategorySpecificationTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategorySpecificationTemplateClient<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CategorySpecificationTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategorySpecificationTemplateFindFirstArgs} args - Arguments to find a CategorySpecificationTemplate
+     * @example
+     * // Get one CategorySpecificationTemplate
+     * const categorySpecificationTemplate = await prisma.categorySpecificationTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CategorySpecificationTemplateFindFirstArgs>(args?: SelectSubset<T, CategorySpecificationTemplateFindFirstArgs<ExtArgs>>): Prisma__CategorySpecificationTemplateClient<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CategorySpecificationTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategorySpecificationTemplateFindFirstOrThrowArgs} args - Arguments to find a CategorySpecificationTemplate
+     * @example
+     * // Get one CategorySpecificationTemplate
+     * const categorySpecificationTemplate = await prisma.categorySpecificationTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CategorySpecificationTemplateFindFirstOrThrowArgs>(args?: SelectSubset<T, CategorySpecificationTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategorySpecificationTemplateClient<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CategorySpecificationTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategorySpecificationTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CategorySpecificationTemplates
+     * const categorySpecificationTemplates = await prisma.categorySpecificationTemplate.findMany()
+     * 
+     * // Get first 10 CategorySpecificationTemplates
+     * const categorySpecificationTemplates = await prisma.categorySpecificationTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const categorySpecificationTemplateWithIdOnly = await prisma.categorySpecificationTemplate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CategorySpecificationTemplateFindManyArgs>(args?: SelectSubset<T, CategorySpecificationTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CategorySpecificationTemplate.
+     * @param {CategorySpecificationTemplateCreateArgs} args - Arguments to create a CategorySpecificationTemplate.
+     * @example
+     * // Create one CategorySpecificationTemplate
+     * const CategorySpecificationTemplate = await prisma.categorySpecificationTemplate.create({
+     *   data: {
+     *     // ... data to create a CategorySpecificationTemplate
+     *   }
+     * })
+     * 
+     */
+    create<T extends CategorySpecificationTemplateCreateArgs>(args: SelectSubset<T, CategorySpecificationTemplateCreateArgs<ExtArgs>>): Prisma__CategorySpecificationTemplateClient<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CategorySpecificationTemplates.
+     * @param {CategorySpecificationTemplateCreateManyArgs} args - Arguments to create many CategorySpecificationTemplates.
+     * @example
+     * // Create many CategorySpecificationTemplates
+     * const categorySpecificationTemplate = await prisma.categorySpecificationTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CategorySpecificationTemplateCreateManyArgs>(args?: SelectSubset<T, CategorySpecificationTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CategorySpecificationTemplates and returns the data saved in the database.
+     * @param {CategorySpecificationTemplateCreateManyAndReturnArgs} args - Arguments to create many CategorySpecificationTemplates.
+     * @example
+     * // Create many CategorySpecificationTemplates
+     * const categorySpecificationTemplate = await prisma.categorySpecificationTemplate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CategorySpecificationTemplates and only return the `id`
+     * const categorySpecificationTemplateWithIdOnly = await prisma.categorySpecificationTemplate.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CategorySpecificationTemplateCreateManyAndReturnArgs>(args?: SelectSubset<T, CategorySpecificationTemplateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CategorySpecificationTemplate.
+     * @param {CategorySpecificationTemplateDeleteArgs} args - Arguments to delete one CategorySpecificationTemplate.
+     * @example
+     * // Delete one CategorySpecificationTemplate
+     * const CategorySpecificationTemplate = await prisma.categorySpecificationTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one CategorySpecificationTemplate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CategorySpecificationTemplateDeleteArgs>(args: SelectSubset<T, CategorySpecificationTemplateDeleteArgs<ExtArgs>>): Prisma__CategorySpecificationTemplateClient<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CategorySpecificationTemplate.
+     * @param {CategorySpecificationTemplateUpdateArgs} args - Arguments to update one CategorySpecificationTemplate.
+     * @example
+     * // Update one CategorySpecificationTemplate
+     * const categorySpecificationTemplate = await prisma.categorySpecificationTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CategorySpecificationTemplateUpdateArgs>(args: SelectSubset<T, CategorySpecificationTemplateUpdateArgs<ExtArgs>>): Prisma__CategorySpecificationTemplateClient<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CategorySpecificationTemplates.
+     * @param {CategorySpecificationTemplateDeleteManyArgs} args - Arguments to filter CategorySpecificationTemplates to delete.
+     * @example
+     * // Delete a few CategorySpecificationTemplates
+     * const { count } = await prisma.categorySpecificationTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CategorySpecificationTemplateDeleteManyArgs>(args?: SelectSubset<T, CategorySpecificationTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CategorySpecificationTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategorySpecificationTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CategorySpecificationTemplates
+     * const categorySpecificationTemplate = await prisma.categorySpecificationTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CategorySpecificationTemplateUpdateManyArgs>(args: SelectSubset<T, CategorySpecificationTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CategorySpecificationTemplates and returns the data updated in the database.
+     * @param {CategorySpecificationTemplateUpdateManyAndReturnArgs} args - Arguments to update many CategorySpecificationTemplates.
+     * @example
+     * // Update many CategorySpecificationTemplates
+     * const categorySpecificationTemplate = await prisma.categorySpecificationTemplate.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CategorySpecificationTemplates and only return the `id`
+     * const categorySpecificationTemplateWithIdOnly = await prisma.categorySpecificationTemplate.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CategorySpecificationTemplateUpdateManyAndReturnArgs>(args: SelectSubset<T, CategorySpecificationTemplateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CategorySpecificationTemplate.
+     * @param {CategorySpecificationTemplateUpsertArgs} args - Arguments to update or create a CategorySpecificationTemplate.
+     * @example
+     * // Update or create a CategorySpecificationTemplate
+     * const categorySpecificationTemplate = await prisma.categorySpecificationTemplate.upsert({
+     *   create: {
+     *     // ... data to create a CategorySpecificationTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CategorySpecificationTemplate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CategorySpecificationTemplateUpsertArgs>(args: SelectSubset<T, CategorySpecificationTemplateUpsertArgs<ExtArgs>>): Prisma__CategorySpecificationTemplateClient<$Result.GetResult<Prisma.$CategorySpecificationTemplatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CategorySpecificationTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategorySpecificationTemplateCountArgs} args - Arguments to filter CategorySpecificationTemplates to count.
+     * @example
+     * // Count the number of CategorySpecificationTemplates
+     * const count = await prisma.categorySpecificationTemplate.count({
+     *   where: {
+     *     // ... the filter for the CategorySpecificationTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends CategorySpecificationTemplateCountArgs>(
+      args?: Subset<T, CategorySpecificationTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CategorySpecificationTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CategorySpecificationTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategorySpecificationTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CategorySpecificationTemplateAggregateArgs>(args: Subset<T, CategorySpecificationTemplateAggregateArgs>): Prisma.PrismaPromise<GetCategorySpecificationTemplateAggregateType<T>>
+
+    /**
+     * Group by CategorySpecificationTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategorySpecificationTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CategorySpecificationTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CategorySpecificationTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: CategorySpecificationTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CategorySpecificationTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategorySpecificationTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CategorySpecificationTemplate model
+   */
+  readonly fields: CategorySpecificationTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CategorySpecificationTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CategorySpecificationTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CategorySpecificationTemplate model
+   */
+  interface CategorySpecificationTemplateFieldRefs {
+    readonly id: FieldRef<"CategorySpecificationTemplate", 'String'>
+    readonly key: FieldRef<"CategorySpecificationTemplate", 'String'>
+    readonly categoryId: FieldRef<"CategorySpecificationTemplate", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CategorySpecificationTemplate findUnique
+   */
+  export type CategorySpecificationTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which CategorySpecificationTemplate to fetch.
+     */
+    where: CategorySpecificationTemplateWhereUniqueInput
+  }
+
+  /**
+   * CategorySpecificationTemplate findUniqueOrThrow
+   */
+  export type CategorySpecificationTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which CategorySpecificationTemplate to fetch.
+     */
+    where: CategorySpecificationTemplateWhereUniqueInput
+  }
+
+  /**
+   * CategorySpecificationTemplate findFirst
+   */
+  export type CategorySpecificationTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which CategorySpecificationTemplate to fetch.
+     */
+    where?: CategorySpecificationTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategorySpecificationTemplates to fetch.
+     */
+    orderBy?: CategorySpecificationTemplateOrderByWithRelationInput | CategorySpecificationTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CategorySpecificationTemplates.
+     */
+    cursor?: CategorySpecificationTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategorySpecificationTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategorySpecificationTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CategorySpecificationTemplates.
+     */
+    distinct?: CategorySpecificationTemplateScalarFieldEnum | CategorySpecificationTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * CategorySpecificationTemplate findFirstOrThrow
+   */
+  export type CategorySpecificationTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which CategorySpecificationTemplate to fetch.
+     */
+    where?: CategorySpecificationTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategorySpecificationTemplates to fetch.
+     */
+    orderBy?: CategorySpecificationTemplateOrderByWithRelationInput | CategorySpecificationTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CategorySpecificationTemplates.
+     */
+    cursor?: CategorySpecificationTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategorySpecificationTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategorySpecificationTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CategorySpecificationTemplates.
+     */
+    distinct?: CategorySpecificationTemplateScalarFieldEnum | CategorySpecificationTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * CategorySpecificationTemplate findMany
+   */
+  export type CategorySpecificationTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which CategorySpecificationTemplates to fetch.
+     */
+    where?: CategorySpecificationTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategorySpecificationTemplates to fetch.
+     */
+    orderBy?: CategorySpecificationTemplateOrderByWithRelationInput | CategorySpecificationTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CategorySpecificationTemplates.
+     */
+    cursor?: CategorySpecificationTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategorySpecificationTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategorySpecificationTemplates.
+     */
+    skip?: number
+    distinct?: CategorySpecificationTemplateScalarFieldEnum | CategorySpecificationTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * CategorySpecificationTemplate create
+   */
+  export type CategorySpecificationTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CategorySpecificationTemplate.
+     */
+    data: XOR<CategorySpecificationTemplateCreateInput, CategorySpecificationTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * CategorySpecificationTemplate createMany
+   */
+  export type CategorySpecificationTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CategorySpecificationTemplates.
+     */
+    data: CategorySpecificationTemplateCreateManyInput | CategorySpecificationTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CategorySpecificationTemplate createManyAndReturn
+   */
+  export type CategorySpecificationTemplateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * The data used to create many CategorySpecificationTemplates.
+     */
+    data: CategorySpecificationTemplateCreateManyInput | CategorySpecificationTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CategorySpecificationTemplate update
+   */
+  export type CategorySpecificationTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CategorySpecificationTemplate.
+     */
+    data: XOR<CategorySpecificationTemplateUpdateInput, CategorySpecificationTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which CategorySpecificationTemplate to update.
+     */
+    where: CategorySpecificationTemplateWhereUniqueInput
+  }
+
+  /**
+   * CategorySpecificationTemplate updateMany
+   */
+  export type CategorySpecificationTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CategorySpecificationTemplates.
+     */
+    data: XOR<CategorySpecificationTemplateUpdateManyMutationInput, CategorySpecificationTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which CategorySpecificationTemplates to update
+     */
+    where?: CategorySpecificationTemplateWhereInput
+    /**
+     * Limit how many CategorySpecificationTemplates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CategorySpecificationTemplate updateManyAndReturn
+   */
+  export type CategorySpecificationTemplateUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * The data used to update CategorySpecificationTemplates.
+     */
+    data: XOR<CategorySpecificationTemplateUpdateManyMutationInput, CategorySpecificationTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which CategorySpecificationTemplates to update
+     */
+    where?: CategorySpecificationTemplateWhereInput
+    /**
+     * Limit how many CategorySpecificationTemplates to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CategorySpecificationTemplate upsert
+   */
+  export type CategorySpecificationTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CategorySpecificationTemplate to update in case it exists.
+     */
+    where: CategorySpecificationTemplateWhereUniqueInput
+    /**
+     * In case the CategorySpecificationTemplate found by the `where` argument doesn't exist, create a new CategorySpecificationTemplate with this data.
+     */
+    create: XOR<CategorySpecificationTemplateCreateInput, CategorySpecificationTemplateUncheckedCreateInput>
+    /**
+     * In case the CategorySpecificationTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CategorySpecificationTemplateUpdateInput, CategorySpecificationTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * CategorySpecificationTemplate delete
+   */
+  export type CategorySpecificationTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter which CategorySpecificationTemplate to delete.
+     */
+    where: CategorySpecificationTemplateWhereUniqueInput
+  }
+
+  /**
+   * CategorySpecificationTemplate deleteMany
+   */
+  export type CategorySpecificationTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CategorySpecificationTemplates to delete
+     */
+    where?: CategorySpecificationTemplateWhereInput
+    /**
+     * Limit how many CategorySpecificationTemplates to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CategorySpecificationTemplate without action
+   */
+  export type CategorySpecificationTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategorySpecificationTemplate
+     */
+    select?: CategorySpecificationTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategorySpecificationTemplate
+     */
+    omit?: CategorySpecificationTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategorySpecificationTemplateInclude<ExtArgs> | null
   }
 
 
@@ -7897,6 +9057,15 @@ export namespace Prisma {
   export type ProductImageScalarFieldEnum = (typeof ProductImageScalarFieldEnum)[keyof typeof ProductImageScalarFieldEnum]
 
 
+  export const CategorySpecificationTemplateScalarFieldEnum: {
+    id: 'id',
+    key: 'key',
+    categoryId: 'categoryId'
+  };
+
+  export type CategorySpecificationTemplateScalarFieldEnum = (typeof CategorySpecificationTemplateScalarFieldEnum)[keyof typeof CategorySpecificationTemplateScalarFieldEnum]
+
+
   export const ProductSpecificationScalarFieldEnum: {
     id: 'id',
     key: 'key',
@@ -8131,12 +9300,14 @@ export namespace Prisma {
     id?: StringFilter<"Category"> | string
     name?: StringFilter<"Category"> | string
     products?: ProductListRelationFilter
+    CategorySpecificationTemplate?: CategorySpecificationTemplateListRelationFilter
   }
 
   export type CategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     products?: ProductOrderByRelationAggregateInput
+    CategorySpecificationTemplate?: CategorySpecificationTemplateOrderByRelationAggregateInput
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -8146,6 +9317,7 @@ export namespace Prisma {
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
     products?: ProductListRelationFilter
+    CategorySpecificationTemplate?: CategorySpecificationTemplateListRelationFilter
   }, "id" | "name">
 
   export type CategoryOrderByWithAggregationInput = {
@@ -8207,6 +9379,51 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"ProductImage"> | string
     url?: StringWithAggregatesFilter<"ProductImage"> | string
     productId?: StringWithAggregatesFilter<"ProductImage"> | string
+  }
+
+  export type CategorySpecificationTemplateWhereInput = {
+    AND?: CategorySpecificationTemplateWhereInput | CategorySpecificationTemplateWhereInput[]
+    OR?: CategorySpecificationTemplateWhereInput[]
+    NOT?: CategorySpecificationTemplateWhereInput | CategorySpecificationTemplateWhereInput[]
+    id?: StringFilter<"CategorySpecificationTemplate"> | string
+    key?: StringFilter<"CategorySpecificationTemplate"> | string
+    categoryId?: StringFilter<"CategorySpecificationTemplate"> | string
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+  }
+
+  export type CategorySpecificationTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    key?: SortOrder
+    categoryId?: SortOrder
+    category?: CategoryOrderByWithRelationInput
+  }
+
+  export type CategorySpecificationTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CategorySpecificationTemplateWhereInput | CategorySpecificationTemplateWhereInput[]
+    OR?: CategorySpecificationTemplateWhereInput[]
+    NOT?: CategorySpecificationTemplateWhereInput | CategorySpecificationTemplateWhereInput[]
+    key?: StringFilter<"CategorySpecificationTemplate"> | string
+    categoryId?: StringFilter<"CategorySpecificationTemplate"> | string
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+  }, "id">
+
+  export type CategorySpecificationTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    key?: SortOrder
+    categoryId?: SortOrder
+    _count?: CategorySpecificationTemplateCountOrderByAggregateInput
+    _max?: CategorySpecificationTemplateMaxOrderByAggregateInput
+    _min?: CategorySpecificationTemplateMinOrderByAggregateInput
+  }
+
+  export type CategorySpecificationTemplateScalarWhereWithAggregatesInput = {
+    AND?: CategorySpecificationTemplateScalarWhereWithAggregatesInput | CategorySpecificationTemplateScalarWhereWithAggregatesInput[]
+    OR?: CategorySpecificationTemplateScalarWhereWithAggregatesInput[]
+    NOT?: CategorySpecificationTemplateScalarWhereWithAggregatesInput | CategorySpecificationTemplateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CategorySpecificationTemplate"> | string
+    key?: StringWithAggregatesFilter<"CategorySpecificationTemplate"> | string
+    categoryId?: StringWithAggregatesFilter<"CategorySpecificationTemplate"> | string
   }
 
   export type ProductSpecificationWhereInput = {
@@ -8482,24 +9699,28 @@ export namespace Prisma {
     id?: string
     name: string
     products?: ProductCreateNestedManyWithoutCategoryInput
+    CategorySpecificationTemplate?: CategorySpecificationTemplateCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
     id?: string
     name: string
     products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
+    CategorySpecificationTemplate?: CategorySpecificationTemplateUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     products?: ProductUpdateManyWithoutCategoryNestedInput
+    CategorySpecificationTemplate?: CategorySpecificationTemplateUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
+    CategorySpecificationTemplate?: CategorySpecificationTemplateUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryCreateManyInput = {
@@ -8556,6 +9777,47 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategorySpecificationTemplateCreateInput = {
+    id?: string
+    key: string
+    category: CategoryCreateNestedOneWithoutCategorySpecificationTemplateInput
+  }
+
+  export type CategorySpecificationTemplateUncheckedCreateInput = {
+    id?: string
+    key: string
+    categoryId: string
+  }
+
+  export type CategorySpecificationTemplateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    category?: CategoryUpdateOneRequiredWithoutCategorySpecificationTemplateNestedInput
+  }
+
+  export type CategorySpecificationTemplateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategorySpecificationTemplateCreateManyInput = {
+    id?: string
+    key: string
+    categoryId: string
+  }
+
+  export type CategorySpecificationTemplateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategorySpecificationTemplateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductSpecificationCreateInput = {
@@ -8959,7 +10221,17 @@ export namespace Prisma {
     none?: ProductWhereInput
   }
 
+  export type CategorySpecificationTemplateListRelationFilter = {
+    every?: CategorySpecificationTemplateWhereInput
+    some?: CategorySpecificationTemplateWhereInput
+    none?: CategorySpecificationTemplateWhereInput
+  }
+
   export type ProductOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CategorySpecificationTemplateOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8999,6 +10271,24 @@ export namespace Prisma {
     id?: SortOrder
     url?: SortOrder
     productId?: SortOrder
+  }
+
+  export type CategorySpecificationTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type CategorySpecificationTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type CategorySpecificationTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    categoryId?: SortOrder
   }
 
   export type ProductSpecificationCountOrderByAggregateInput = {
@@ -9247,11 +10537,25 @@ export namespace Prisma {
     connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
   }
 
+  export type CategorySpecificationTemplateCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<CategorySpecificationTemplateCreateWithoutCategoryInput, CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput> | CategorySpecificationTemplateCreateWithoutCategoryInput[] | CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CategorySpecificationTemplateCreateOrConnectWithoutCategoryInput | CategorySpecificationTemplateCreateOrConnectWithoutCategoryInput[]
+    createMany?: CategorySpecificationTemplateCreateManyCategoryInputEnvelope
+    connect?: CategorySpecificationTemplateWhereUniqueInput | CategorySpecificationTemplateWhereUniqueInput[]
+  }
+
   export type ProductUncheckedCreateNestedManyWithoutCategoryInput = {
     create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
     createMany?: ProductCreateManyCategoryInputEnvelope
     connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+  }
+
+  export type CategorySpecificationTemplateUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<CategorySpecificationTemplateCreateWithoutCategoryInput, CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput> | CategorySpecificationTemplateCreateWithoutCategoryInput[] | CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CategorySpecificationTemplateCreateOrConnectWithoutCategoryInput | CategorySpecificationTemplateCreateOrConnectWithoutCategoryInput[]
+    createMany?: CategorySpecificationTemplateCreateManyCategoryInputEnvelope
+    connect?: CategorySpecificationTemplateWhereUniqueInput | CategorySpecificationTemplateWhereUniqueInput[]
   }
 
   export type ProductUpdateManyWithoutCategoryNestedInput = {
@@ -9268,6 +10572,20 @@ export namespace Prisma {
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
   }
 
+  export type CategorySpecificationTemplateUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<CategorySpecificationTemplateCreateWithoutCategoryInput, CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput> | CategorySpecificationTemplateCreateWithoutCategoryInput[] | CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CategorySpecificationTemplateCreateOrConnectWithoutCategoryInput | CategorySpecificationTemplateCreateOrConnectWithoutCategoryInput[]
+    upsert?: CategorySpecificationTemplateUpsertWithWhereUniqueWithoutCategoryInput | CategorySpecificationTemplateUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: CategorySpecificationTemplateCreateManyCategoryInputEnvelope
+    set?: CategorySpecificationTemplateWhereUniqueInput | CategorySpecificationTemplateWhereUniqueInput[]
+    disconnect?: CategorySpecificationTemplateWhereUniqueInput | CategorySpecificationTemplateWhereUniqueInput[]
+    delete?: CategorySpecificationTemplateWhereUniqueInput | CategorySpecificationTemplateWhereUniqueInput[]
+    connect?: CategorySpecificationTemplateWhereUniqueInput | CategorySpecificationTemplateWhereUniqueInput[]
+    update?: CategorySpecificationTemplateUpdateWithWhereUniqueWithoutCategoryInput | CategorySpecificationTemplateUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: CategorySpecificationTemplateUpdateManyWithWhereWithoutCategoryInput | CategorySpecificationTemplateUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: CategorySpecificationTemplateScalarWhereInput | CategorySpecificationTemplateScalarWhereInput[]
+  }
+
   export type ProductUncheckedUpdateManyWithoutCategoryNestedInput = {
     create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
@@ -9282,6 +10600,20 @@ export namespace Prisma {
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
   }
 
+  export type CategorySpecificationTemplateUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<CategorySpecificationTemplateCreateWithoutCategoryInput, CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput> | CategorySpecificationTemplateCreateWithoutCategoryInput[] | CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CategorySpecificationTemplateCreateOrConnectWithoutCategoryInput | CategorySpecificationTemplateCreateOrConnectWithoutCategoryInput[]
+    upsert?: CategorySpecificationTemplateUpsertWithWhereUniqueWithoutCategoryInput | CategorySpecificationTemplateUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: CategorySpecificationTemplateCreateManyCategoryInputEnvelope
+    set?: CategorySpecificationTemplateWhereUniqueInput | CategorySpecificationTemplateWhereUniqueInput[]
+    disconnect?: CategorySpecificationTemplateWhereUniqueInput | CategorySpecificationTemplateWhereUniqueInput[]
+    delete?: CategorySpecificationTemplateWhereUniqueInput | CategorySpecificationTemplateWhereUniqueInput[]
+    connect?: CategorySpecificationTemplateWhereUniqueInput | CategorySpecificationTemplateWhereUniqueInput[]
+    update?: CategorySpecificationTemplateUpdateWithWhereUniqueWithoutCategoryInput | CategorySpecificationTemplateUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: CategorySpecificationTemplateUpdateManyWithWhereWithoutCategoryInput | CategorySpecificationTemplateUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: CategorySpecificationTemplateScalarWhereInput | CategorySpecificationTemplateScalarWhereInput[]
+  }
+
   export type ProductCreateNestedOneWithoutImagesInput = {
     create?: XOR<ProductCreateWithoutImagesInput, ProductUncheckedCreateWithoutImagesInput>
     connectOrCreate?: ProductCreateOrConnectWithoutImagesInput
@@ -9294,6 +10626,20 @@ export namespace Prisma {
     upsert?: ProductUpsertWithoutImagesInput
     connect?: ProductWhereUniqueInput
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutImagesInput, ProductUpdateWithoutImagesInput>, ProductUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type CategoryCreateNestedOneWithoutCategorySpecificationTemplateInput = {
+    create?: XOR<CategoryCreateWithoutCategorySpecificationTemplateInput, CategoryUncheckedCreateWithoutCategorySpecificationTemplateInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutCategorySpecificationTemplateInput
+    connect?: CategoryWhereUniqueInput
+  }
+
+  export type CategoryUpdateOneRequiredWithoutCategorySpecificationTemplateNestedInput = {
+    create?: XOR<CategoryCreateWithoutCategorySpecificationTemplateInput, CategoryUncheckedCreateWithoutCategorySpecificationTemplateInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutCategorySpecificationTemplateInput
+    upsert?: CategoryUpsertWithoutCategorySpecificationTemplateInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutCategorySpecificationTemplateInput, CategoryUpdateWithoutCategorySpecificationTemplateInput>, CategoryUncheckedUpdateWithoutCategorySpecificationTemplateInput>
   }
 
   export type ProductCreateNestedOneWithoutSpecificationsInput = {
@@ -9480,11 +10826,13 @@ export namespace Prisma {
   export type CategoryCreateWithoutProductsInput = {
     id?: string
     name: string
+    CategorySpecificationTemplate?: CategorySpecificationTemplateCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutProductsInput = {
     id?: string
     name: string
+    CategorySpecificationTemplate?: CategorySpecificationTemplateUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryCreateOrConnectWithoutProductsInput = {
@@ -9574,11 +10922,13 @@ export namespace Prisma {
   export type CategoryUpdateWithoutProductsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    CategorySpecificationTemplate?: CategorySpecificationTemplateUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutProductsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    CategorySpecificationTemplate?: CategorySpecificationTemplateUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type ProductImageUpsertWithWhereUniqueWithoutProductInput = {
@@ -9700,6 +11050,26 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CategorySpecificationTemplateCreateWithoutCategoryInput = {
+    id?: string
+    key: string
+  }
+
+  export type CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput = {
+    id?: string
+    key: string
+  }
+
+  export type CategorySpecificationTemplateCreateOrConnectWithoutCategoryInput = {
+    where: CategorySpecificationTemplateWhereUniqueInput
+    create: XOR<CategorySpecificationTemplateCreateWithoutCategoryInput, CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type CategorySpecificationTemplateCreateManyCategoryInputEnvelope = {
+    data: CategorySpecificationTemplateCreateManyCategoryInput | CategorySpecificationTemplateCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProductUpsertWithWhereUniqueWithoutCategoryInput = {
     where: ProductWhereUniqueInput
     update: XOR<ProductUpdateWithoutCategoryInput, ProductUncheckedUpdateWithoutCategoryInput>
@@ -9730,6 +11100,31 @@ export namespace Prisma {
     contactLink?: StringFilter<"Product"> | string
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
+  }
+
+  export type CategorySpecificationTemplateUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: CategorySpecificationTemplateWhereUniqueInput
+    update: XOR<CategorySpecificationTemplateUpdateWithoutCategoryInput, CategorySpecificationTemplateUncheckedUpdateWithoutCategoryInput>
+    create: XOR<CategorySpecificationTemplateCreateWithoutCategoryInput, CategorySpecificationTemplateUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type CategorySpecificationTemplateUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: CategorySpecificationTemplateWhereUniqueInput
+    data: XOR<CategorySpecificationTemplateUpdateWithoutCategoryInput, CategorySpecificationTemplateUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type CategorySpecificationTemplateUpdateManyWithWhereWithoutCategoryInput = {
+    where: CategorySpecificationTemplateScalarWhereInput
+    data: XOR<CategorySpecificationTemplateUpdateManyMutationInput, CategorySpecificationTemplateUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type CategorySpecificationTemplateScalarWhereInput = {
+    AND?: CategorySpecificationTemplateScalarWhereInput | CategorySpecificationTemplateScalarWhereInput[]
+    OR?: CategorySpecificationTemplateScalarWhereInput[]
+    NOT?: CategorySpecificationTemplateScalarWhereInput | CategorySpecificationTemplateScalarWhereInput[]
+    id?: StringFilter<"CategorySpecificationTemplate"> | string
+    key?: StringFilter<"CategorySpecificationTemplate"> | string
+    categoryId?: StringFilter<"CategorySpecificationTemplate"> | string
   }
 
   export type ProductCreateWithoutImagesInput = {
@@ -9806,6 +11201,46 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     specifications?: ProductSpecificationUncheckedUpdateManyWithoutProductNestedInput
     interactions?: InteractionUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type CategoryCreateWithoutCategorySpecificationTemplateInput = {
+    id?: string
+    name: string
+    products?: ProductCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUncheckedCreateWithoutCategorySpecificationTemplateInput = {
+    id?: string
+    name: string
+    products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryCreateOrConnectWithoutCategorySpecificationTemplateInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutCategorySpecificationTemplateInput, CategoryUncheckedCreateWithoutCategorySpecificationTemplateInput>
+  }
+
+  export type CategoryUpsertWithoutCategorySpecificationTemplateInput = {
+    update: XOR<CategoryUpdateWithoutCategorySpecificationTemplateInput, CategoryUncheckedUpdateWithoutCategorySpecificationTemplateInput>
+    create: XOR<CategoryCreateWithoutCategorySpecificationTemplateInput, CategoryUncheckedCreateWithoutCategorySpecificationTemplateInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutCategorySpecificationTemplateInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutCategorySpecificationTemplateInput, CategoryUncheckedUpdateWithoutCategorySpecificationTemplateInput>
+  }
+
+  export type CategoryUpdateWithoutCategorySpecificationTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    products?: ProductUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutCategorySpecificationTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type ProductCreateWithoutSpecificationsInput = {
@@ -10048,6 +11483,11 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type CategorySpecificationTemplateCreateManyCategoryInput = {
+    id?: string
+    key: string
+  }
+
   export type ProductUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
@@ -10088,6 +11528,21 @@ export namespace Prisma {
     contactLink?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategorySpecificationTemplateUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategorySpecificationTemplateUncheckedUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategorySpecificationTemplateUncheckedUpdateManyWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
   }
 
 

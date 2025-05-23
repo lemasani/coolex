@@ -34,9 +34,10 @@ model Product {
 }
 
 model Category {
-  id       String    @id @default(uuid())
-  name     String    @unique
-  products Product[]
+  id                            String                          @id @default(uuid())
+  name                          String                          @unique
+  products                      Product[]
+  CategorySpecificationTemplate CategorySpecificationTemplate[]
 }
 
 model ProductImage {
@@ -44,6 +45,13 @@ model ProductImage {
   url       String
   product   Product @relation(fields: [productId], references: [id])
   productId String
+}
+
+model CategorySpecificationTemplate {
+  id         String   @id @default(uuid())
+  key        String // e.g., "CC", "Year", "Material"
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
 }
 
 model ProductSpecification {

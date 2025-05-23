@@ -42,6 +42,21 @@ const adminRoutes = [
       },
     ],
   },
+  {
+    group: "Categories",
+    items: [
+      {
+        label: "Categories",
+        icon: Package,
+        href: "/admin/categories",
+      },
+      {
+        label: "Add Category",
+        icon: Plus,
+        href: "/admin/categories/new",
+      },
+    ],
+  },
 ];
 
 export function AdminSidebar() {
