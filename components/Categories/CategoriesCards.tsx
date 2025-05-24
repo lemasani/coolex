@@ -3,8 +3,7 @@ import React from 'react'
 import { useProductCategories } from '@/hooks/useProductCategories'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Edit, Trash2, MoreHorizontal } from 'lucide-react'
+import { Edit, Trash2 } from 'lucide-react'
 import { ProductCategoryDisplay } from '@/types/categories.types'
 
 // Icons for different category types (keeping the same)
@@ -51,12 +50,7 @@ export default function CategoryCards() {
                   <p className="text-sm text-muted-foreground">/{category.slug}</p>
                 </div>
               </div>
-              <div className="flex space-x-1 items-center">
-                <Badge variant="outline" className="bg-black text-white">Active</Badge>
-                <Button variant="ghost" size="icon" className="h-7 w-7 rounded-full">
-                  <MoreHorizontal className="h-4 w-4" />
-                </Button>
-              </div>
+          
             </CardHeader>
             
             <CardContent className="py-4 border-t border-b">
