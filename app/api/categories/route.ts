@@ -3,10 +3,27 @@ import db from "@/lib/prisma";
 export async function GET() {
   const categories = await db.category.findMany({
     include: {
-      CategorySpecificationTemplate: true 
+      CategorySpecificationTemplate: true,
+      _count: {
+        select: {
+          products: true
+        }
+      }
     }
   });
-  return Response.json(categories);
+  
+  // Transform the response to make it cleaner (optional)
+  const formattedCategories = categories.map(category => ({
+    id: category.id,
+    name: category.name,
+    slug: category.slug,
+    updatedAt: category.updatedAt,
+    createdAt: category.createdAt,
+    productCount: category._count.products,
+    specifications: category.CategorySpecificationTemplate
+  }));
+  
+  return Response.json(formattedCategories);
 }
 
 export async function POST(req: Request) {
@@ -17,6 +34,7 @@ export async function POST(req: Request) {
   const category = await db.category.create({
     data: {
       name,
+      slug: name.toLowerCase().replace(/\s+/g, '-'),
       CategorySpecificationTemplate: {
         create: specificationKeys.map((key: string) => ({
           key,

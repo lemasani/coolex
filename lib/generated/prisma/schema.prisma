@@ -36,8 +36,11 @@ model Product {
 model Category {
   id                            String                          @id @default(uuid())
   name                          String                          @unique
+  slug                          String                          @unique()
   products                      Product[]
   CategorySpecificationTemplate CategorySpecificationTemplate[]
+  updatedAt                     DateTime                        @updatedAt
+  createdAt                     DateTime                        @default(now())
 }
 
 model ProductImage {

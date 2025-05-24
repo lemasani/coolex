@@ -2776,16 +2776,25 @@ export namespace Prisma {
   export type CategoryMinAggregateOutputType = {
     id: string | null
     name: string | null
+    slug: string | null
+    updatedAt: Date | null
+    createdAt: Date | null
   }
 
   export type CategoryMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    slug: string | null
+    updatedAt: Date | null
+    createdAt: Date | null
   }
 
   export type CategoryCountAggregateOutputType = {
     id: number
     name: number
+    slug: number
+    updatedAt: number
+    createdAt: number
     _all: number
   }
 
@@ -2793,16 +2802,25 @@ export namespace Prisma {
   export type CategoryMinAggregateInputType = {
     id?: true
     name?: true
+    slug?: true
+    updatedAt?: true
+    createdAt?: true
   }
 
   export type CategoryMaxAggregateInputType = {
     id?: true
     name?: true
+    slug?: true
+    updatedAt?: true
+    createdAt?: true
   }
 
   export type CategoryCountAggregateInputType = {
     id?: true
     name?: true
+    slug?: true
+    updatedAt?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -2881,6 +2899,9 @@ export namespace Prisma {
   export type CategoryGroupByOutputType = {
     id: string
     name: string
+    slug: string
+    updatedAt: Date
+    createdAt: Date
     _count: CategoryCountAggregateOutputType | null
     _min: CategoryMinAggregateOutputType | null
     _max: CategoryMaxAggregateOutputType | null
@@ -2903,6 +2924,9 @@ export namespace Prisma {
   export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    slug?: boolean
+    updatedAt?: boolean
+    createdAt?: boolean
     products?: boolean | Category$productsArgs<ExtArgs>
     CategorySpecificationTemplate?: boolean | Category$CategorySpecificationTemplateArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -2911,19 +2935,28 @@ export namespace Prisma {
   export type CategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    slug?: boolean
+    updatedAt?: boolean
+    createdAt?: boolean
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    slug?: boolean
+    updatedAt?: boolean
+    createdAt?: boolean
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectScalar = {
     id?: boolean
     name?: boolean
+    slug?: boolean
+    updatedAt?: boolean
+    createdAt?: boolean
   }
 
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["category"]>
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "updatedAt" | "createdAt", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | Category$productsArgs<ExtArgs>
     CategorySpecificationTemplate?: boolean | Category$CategorySpecificationTemplateArgs<ExtArgs>
@@ -2941,6 +2974,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      slug: string
+      updatedAt: Date
+      createdAt: Date
     }, ExtArgs["result"]["category"]>
     composites: {}
   }
@@ -3368,6 +3404,9 @@ export namespace Prisma {
   interface CategoryFieldRefs {
     readonly id: FieldRef<"Category", 'String'>
     readonly name: FieldRef<"Category", 'String'>
+    readonly slug: FieldRef<"Category", 'String'>
+    readonly updatedAt: FieldRef<"Category", 'DateTime'>
+    readonly createdAt: FieldRef<"Category", 'DateTime'>
   }
     
 
@@ -9042,7 +9081,10 @@ export namespace Prisma {
 
   export const CategoryScalarFieldEnum: {
     id: 'id',
-    name: 'name'
+    name: 'name',
+    slug: 'slug',
+    updatedAt: 'updatedAt',
+    createdAt: 'createdAt'
   };
 
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
@@ -9299,6 +9341,9 @@ export namespace Prisma {
     NOT?: CategoryWhereInput | CategoryWhereInput[]
     id?: StringFilter<"Category"> | string
     name?: StringFilter<"Category"> | string
+    slug?: StringFilter<"Category"> | string
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
     products?: ProductListRelationFilter
     CategorySpecificationTemplate?: CategorySpecificationTemplateListRelationFilter
   }
@@ -9306,6 +9351,9 @@ export namespace Prisma {
   export type CategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    slug?: SortOrder
+    updatedAt?: SortOrder
+    createdAt?: SortOrder
     products?: ProductOrderByRelationAggregateInput
     CategorySpecificationTemplate?: CategorySpecificationTemplateOrderByRelationAggregateInput
   }
@@ -9313,16 +9361,22 @@ export namespace Prisma {
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     name?: string
+    slug?: string
     AND?: CategoryWhereInput | CategoryWhereInput[]
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
     products?: ProductListRelationFilter
     CategorySpecificationTemplate?: CategorySpecificationTemplateListRelationFilter
-  }, "id" | "name">
+  }, "id" | "name" | "slug">
 
   export type CategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    slug?: SortOrder
+    updatedAt?: SortOrder
+    createdAt?: SortOrder
     _count?: CategoryCountOrderByAggregateInput
     _max?: CategoryMaxOrderByAggregateInput
     _min?: CategoryMinOrderByAggregateInput
@@ -9334,6 +9388,9 @@ export namespace Prisma {
     NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Category"> | string
     name?: StringWithAggregatesFilter<"Category"> | string
+    slug?: StringWithAggregatesFilter<"Category"> | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
   }
 
   export type ProductImageWhereInput = {
@@ -9698,6 +9755,9 @@ export namespace Prisma {
   export type CategoryCreateInput = {
     id?: string
     name: string
+    slug: string
+    updatedAt?: Date | string
+    createdAt?: Date | string
     products?: ProductCreateNestedManyWithoutCategoryInput
     CategorySpecificationTemplate?: CategorySpecificationTemplateCreateNestedManyWithoutCategoryInput
   }
@@ -9705,6 +9765,9 @@ export namespace Prisma {
   export type CategoryUncheckedCreateInput = {
     id?: string
     name: string
+    slug: string
+    updatedAt?: Date | string
+    createdAt?: Date | string
     products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
     CategorySpecificationTemplate?: CategorySpecificationTemplateUncheckedCreateNestedManyWithoutCategoryInput
   }
@@ -9712,6 +9775,9 @@ export namespace Prisma {
   export type CategoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     products?: ProductUpdateManyWithoutCategoryNestedInput
     CategorySpecificationTemplate?: CategorySpecificationTemplateUpdateManyWithoutCategoryNestedInput
   }
@@ -9719,6 +9785,9 @@ export namespace Prisma {
   export type CategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
     CategorySpecificationTemplate?: CategorySpecificationTemplateUncheckedUpdateManyWithoutCategoryNestedInput
   }
@@ -9726,16 +9795,25 @@ export namespace Prisma {
   export type CategoryCreateManyInput = {
     id?: string
     name: string
+    slug: string
+    updatedAt?: Date | string
+    createdAt?: Date | string
   }
 
   export type CategoryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CategoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProductImageCreateInput = {
@@ -10238,16 +10316,25 @@ export namespace Prisma {
   export type CategoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    slug?: SortOrder
+    updatedAt?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type CategoryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    slug?: SortOrder
+    updatedAt?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type CategoryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    slug?: SortOrder
+    updatedAt?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ProductScalarRelationFilter = {
@@ -10826,12 +10913,18 @@ export namespace Prisma {
   export type CategoryCreateWithoutProductsInput = {
     id?: string
     name: string
+    slug: string
+    updatedAt?: Date | string
+    createdAt?: Date | string
     CategorySpecificationTemplate?: CategorySpecificationTemplateCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutProductsInput = {
     id?: string
     name: string
+    slug: string
+    updatedAt?: Date | string
+    createdAt?: Date | string
     CategorySpecificationTemplate?: CategorySpecificationTemplateUncheckedCreateNestedManyWithoutCategoryInput
   }
 
@@ -10922,12 +11015,18 @@ export namespace Prisma {
   export type CategoryUpdateWithoutProductsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     CategorySpecificationTemplate?: CategorySpecificationTemplateUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutProductsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     CategorySpecificationTemplate?: CategorySpecificationTemplateUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
@@ -11206,12 +11305,18 @@ export namespace Prisma {
   export type CategoryCreateWithoutCategorySpecificationTemplateInput = {
     id?: string
     name: string
+    slug: string
+    updatedAt?: Date | string
+    createdAt?: Date | string
     products?: ProductCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutCategorySpecificationTemplateInput = {
     id?: string
     name: string
+    slug: string
+    updatedAt?: Date | string
+    createdAt?: Date | string
     products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
   }
 
@@ -11234,12 +11339,18 @@ export namespace Prisma {
   export type CategoryUpdateWithoutCategorySpecificationTemplateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     products?: ProductUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutCategorySpecificationTemplateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
